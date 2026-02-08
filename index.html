@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 💜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --lav1:#f4ecff;
+  --lav2:#e7dcff;
+  --lav3:#dacbff;
+  --text:#000;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji",
+    "Garamond",
+    "Book Antiqua",
+    "Palatino",
+    serif;
+
+  background:linear-gradient(135deg,var(--lav1),var(--lav2),var(--lav3));
+  color:var(--text);
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+
+/* FLOATERS */
+.floater{
+  position:fixed;
+  top:-10%;
+  font-size:22px;
+  opacity:.3;
+  animation:fall linear infinite;
+  pointer-events:none;
+}
+@keyframes fall{
+  to{transform:translateY(120vh) rotate(360deg)}
+}
+
+/* PAGES */
+.page{
+  display:none;
+  width:100vw;
+  height:100vh;
+  padding:30px;
+}
+.page.active{
+  display:flex;
+  animation:pop .6s ease;
+}
+@keyframes pop{
+  from{opacity:0;transform:scale(.95)}
+  to{opacity:1;transform:scale(1)}
+}
+
+.content{
+  margin:auto;
+  max-width:900px;
+  text-align:center;
+}
+
+/* TEXT */
+h1{font-size:42px}
+h2{font-size:32px}
+h3{font-size:24px}
+p{font-size:18px;line-height:1.6}
+
+/* BUTTON */
+button{
+  padding:12px 28px;
+  border-radius:30px;
+  border:none;
+  background:#6b4eff;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  margin:10px;
+}
+
+/* MUSIC */
+#musicBtn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  z-index:999;
+}
+
+/* POLAROID */
+.polaroid{
+  background:#fff;
+  padding:15px 15px 35px;
+  width:260px;
+  margin:0 auto 25px;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+.polaroid img{width:100%}
+
+/* TV */
+.tv{
+  width:380px;
+  max-width:90%;
+  margin:15px auto;
+  background:#222;
+  padding:12px;
+  border-radius:16px;
+}
+
+
+.screen{
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+}
+.screen img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  background:#000;
+  animation:tvOn .6s ease forwards;
+  transform-origin: center;
+}
+
+@keyframes tvOn{
+  from{
+    transform:scaleY(.1);
+    opacity:0;
+  }
+  to{
+    transform:scaleY(1);
+    opacity:1;
+  }
+}
+
+
+
+.screen::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* QUIZ */
+.quiz-options button{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  color:#000;
+  border:1px solid #000;
+}
+
+/* TYPING */
+.cursor{
+  display:inline-block;
+  width:2px;
+  height:20px;
+  background:#000;
+  animation:blink 1s infinite;
+}
+@keyframes blink{50%{opacity:0}}
+
+/* FIREWORKS */
+canvas{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:998;
+}
+/* ✨ GLOBAL POLISH */
+.page{
+  backdrop-filter: blur(2px);
+}
+
+.content{
+  background:rgba(255,255,255,.25);
+  border-radius:24px;
+  padding:28px 26px;
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+
+h1,h2,h3{
+  letter-spacing:.2px;
+}
+
+button{
+  transition:.25s ease;
+}
+
+button:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 8px 20px rgba(107,78,255,.4);
+}
+
+/* FADE-IN TEXT */
+.fade{
+  animation:fadeUp .8s ease forwards;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes bounce{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-4px); }
+}
+/* 🔐 Emoji safety override */
+p, span, b, i, em, strong {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-align: center !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  white-space: normal !important;
+}
+.quote, .quote p {
+  text-align: center !important;
+}
+button {
+  font-family:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji",
+    inherit;
+}
+.cell {
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 🔧 Slideshow page text fix (Safari-safe) */
+#p2 h2,
+#p2 h3,
+#p2 p {
+  text-align: center !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+#slideCap {
+  color: #111 !important;
+  background: rgba(255,255,255,0.85);
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+/* 🔒 Force elegant text font on slideshow page */
+#p2,
+#p2 h1,
+#p2 h2,
+#p2 h3,
+#p2 p {
+  font-family: "Garamond", "Book Antiqua", "Palatino", serif !important;
+  font-weight: normal !important;
+  letter-spacing: normal !important;
+}
+#p2 {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+span, .cell span {
+  font-family:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji";
+  line-height: 1;
+}
+/* 💜 PATH OF LOVE */
+#path{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  margin:30px 0;
+  flex-wrap:wrap;
+}
+
+.step{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:rgba(255,255,255,.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  opacity:.3;
+  transform:scale(.8);
+  transition:.4s ease;
+  cursor:pointer;
+}
+
+.step.active{
+  opacity:1;
+  transform:scale(1.1);
+  box-shadow:0 0 18px rgba(160,120,255,.6);
+}
+
+.step.done{
+  opacity:1;
+  transform:scale(1);
+}
+
+.step:hover{
+  transform:scale(1.15);
+}
+
+/* ✒️ Calligraphy buildup text */
+#buildupText{
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+}
+
+/* 😖 Nervous emoji fall */
+.nervous{
+  position:fixed;
+  top:-10%;
+  font-size:26px;
+  opacity:.35;
+  animation:nervousFall linear infinite;
+  pointer-events:none;
+  z-index:1;
+}
+
+@keyframes nervousFall{
+  to{
+    transform:translateY(120vh) rotate(360deg);
+  }
+}
+
+/* 💓 Nervous shake */
+.shake{
+  animation: shake .25s ease-in-out infinite;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-1.5px)}
+  50%{transform:translateX(1.5px)}
+  75%{transform:translateX(-1px)}
+  100%{transform:translateX(0)}
+}
+audio {
+  filter: drop-shadow(0 0 6px rgba(255,0,0,0.4));
+}
+#proposalOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1.2s;
+  z-index:5;
+}
+
+#p7.active #proposalOverlay{
+  opacity:1;
+}
+#proposalButtons{
+  min-height: 80px;
+}
+/* ✉️ ENVELOPES */
+#envelopes{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-top:30px;
+}
+
+.envelope{
+  width:140px;
+  height:100px;
+  background:#fff;
+  border-radius:10px;
+  font-size:48px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+  transition:.3s ease;
+}
+
+.envelope span{
+  font-size:14px;
+  margin-top:6px;
+}
+
+.envelope:hover{
+  transform:scale(1.1);
+}
+
+/* 🎁 GIFT OVERLAY */
+#giftOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+#giftBox{
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  max-width:90%;
+  max-height:85%;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+  animation:pop .4s ease;
+}
+
+#giftBox img,
+#giftBox video{
+  width:100%;
+  max-height:70vh;
+  object-fit:contain;
+  border-radius:14px;
+}
+#envelopes{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin-top:30px;
+  flex-wrap:wrap; /* 👈 THIS LINE */
+}
+
+
+</style>
+</head>
+
+<body>
+  <div id="proposalOverlay"></div>
+<button id="musicBtn">🎵 Music</button>
+<audio id="bgMusic" loop src="assets/bg-music.mp3"></audio>
+<audio id="heartbeat" src="assets/heartbeat.mp3" preload="auto"></audio>
+<audio id="finalMusic" loop src="assets/final-music.mp3"></audio>
+
+
+
+<canvas id="fireworks"></canvas>
+
+<script>
+/* FLOATERS */
+for(let i=0;i<28;i++){
+  const f=document.createElement("div");
+  f.className="floater";
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=10+Math.random()*10+"s";
+  f.textContent=["💜","🌹","💖","✨","🫀"][Math.floor(Math.random()*5)];
+  document.body.appendChild(f);
+}
+</script>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+  <div class="content">
+    <div class="polaroid">
+      <img src="assets/pic00.jpg">
+    </div>
+    <p id="type1"></p>
+   <button id="startBtn">lets start</button>
+
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+  <div class="content">
+    <h2>"A journey of a thousand miles begins with a single step."</h2>
+    <h3>and ours began on 22-01-2025, watch us be happy together <3</h3>
+
+    <div class="tv">
+      <div class="screen">
+        <img id="slideImg" src="assets/photo1.jpg">
+      </div>
+      <p id="slideCap" style="margin:10px 0 0;font-size:15px;">
+        the major reason we are together-tedx 💫
+      </p>
+    </div>
+
+    <div style="
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin-top:12px;
+    ">
+      <button onclick="nextSlide()">next memory</button>
+      <button onclick="go(3)">let's move ahead</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- PAGE 3 QUIZ -->
+<div class="page" id="p3">
+  <div class="content">
+    <h2>Relationship Quiz - dekhe toh how much kup knows us!!!!</h2>
+    <p id="qText"></p>
+    <div class="quiz-options" id="qOpts"></div>
+  </div>
+</div>
+
+<!-- PAGE 4 SCORE -->
+<div class="page" id="p4">
+  <div class="content">
+    <h2>Your Score</h2>
+    <p id="scoreText"></p>
+    <button onclick="go(5)">next</button>
+  </div>
+</div>
+
+<!-- PAGE 5 PATH OF LOVE -->
+<div class="page" id="p5">
+  <div class="content">
+    <h2>Path of Love 🐾</h2>
+    <p style="opacity:.7">Walk with me, one step at a time 💜</p>
+
+    <div id="path">
+      <div class="step active">😺</div>
+      <div class="step">🤍</div>
+      <div class="step">😌</div>
+      <div class="step">🛡</div>
+      <div class="step">😊</div>
+      <div class="step">💜</div>
+      <div class="step">🐱</div>
+    </div>
+
+    <p id="pathMsg" style="min-height:40px"></p>
+
+    <button id="pathNext" style="display:none" onclick="go(6)">
+      next 💍
+    </button>
+  </div>
+</div>
+<!-- PAGE 6 BUILDUP -->
+<div class="page" id="p6">
+  <div class="content">
+    <p id="buildupText"></p>
+
+    <button style="margin-top:30px" onclick="go(7)">
+      next 💜
+    </button>
+  </div>
+</div>
+
+
+<!-- PAGE 7 PROPOSAL -->
+<div class="page" id="p7">
+  <div class="content">
+    <p id="typeProposal"></p>
+
+    <div id="proposalButtons">
+      <button onclick="yes()">YESSS OMGGG FOREVER !!!</button>
+      <button onclick="no()">nah .. i have better optionss..</button>
+    </div>
+
+    <p id="proposalMsg"></p>
+  </div>
+</div>
+
+
+<!-- PAGE 8 GIFTS -->
+<div class="page" id="p8">
+  <div class="content">
+    <h2>I brought all this just to love you 💜</h2>
+    <p>Choose one, slowly…</p>
+
+    <div id="envelopes">
+      <div class="envelope" onclick="openGift(1)">💌<span>Open</span></div>
+      <div class="envelope" onclick="openGift(2)">💌<span>Open</span></div>
+      <div class="envelope" onclick="openGift(3)">💌<span>Open</span></div>
+    </div>
+
+    <!-- ✅ NEXT BUTTON BELONGS HERE -->
+    <button id="giftNext" style="display:none;margin-top:30px" onclick="go(9)">
+      next 💜
+    </button>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- GIFT OVERLAY -->
+<div id="giftOverlay" onclick="closeGift()">
+  <div id="giftBox" onclick="event.stopPropagation()"></div>
+</div>
+
+<!-- LOVE PAGE -->
+<div class="page" id="p9">
+  <div class="content">
+    <p id="loveText"></p>
+    <button onclick="go(10)">next 💖</button>
+  </div>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="page" id="p10">
+  <div class="content">
+    <img
+      src="assets/final.jpg"
+      style="
+        width:220px;
+        border-radius:18px;
+        box-shadow:0 15px 35px rgba(0,0,0,.3);
+        margin-bottom:20px;
+      "
+    >
+    <h1>Thank you for everything</h1>
+    <p>I love youuuu smmmmmm 💜</p>
+  </div>
+</div>
+
+
+
+<script>
+/* NAV */
+const proposalButtons = document.getElementById("proposalButtons");
+
+
+/* MUSIC */
+const bgMusic=document.getElementById("bgMusic");
+musicBtn.onclick=()=>{
+  bgMusic.paused?bgMusic.play():bgMusic.pause();
+};
+
+/* TYPING */
+function typeText(el,text,speed,done){
+  speed = Math.max(speed, 60); // prevent ultra-fast typing
+
+  let i=0;
+  el.innerHTML="";
+  const t=setInterval(()=>{
+    el.innerHTML += text[i] === "\n" ? "<br>" : text[i];
+    i++;
+    if(i>=text.length){
+      clearInterval(t);
+      if(done) done();
+    }
+  },speed);
+}
+const startBtn = document.getElementById("startBtn");
+
+startBtn.onclick = () => {
+  startBtn.disabled = true;
+
+  typeText(
+    type1,
+    "hello loml kup, ik you have been working extremely hard for your exams and I have full faith you will crack it. i am sorry for the frequent troubles i cause. to show you how much you mean to me, here is something for you",
+    80,
+    () => {
+      startBtn.innerText = "lets go ahead 💜";
+      startBtn.disabled = false;
+      startBtn.onclick = () => go(2);
+    }
+  );
+};
+
+
+
+
+/* 💜 BUILDUP PAGE */
+function startBuildup(){
+  const text =
+  "Khushi…it still makes me nervous even today to say it.";
+
+
+  buildupText.innerHTML = "";
+  typeText(buildupText, text, 90);
+
+  // heartbeat
+  heartbeat.volume = 0.35;
+  heartbeat.currentTime = 0;
+  heartbeat.play();
+
+  // gentle shake
+  document.getElementById("p6").classList.add("shake");
+
+  // falling nervous emojis
+  for(let i=0;i<26;i++){
+    const e=document.createElement("div");
+    e.className="nervous";
+    e.style.left=Math.random()*100+"vw";
+    e.style.animationDuration=10+Math.random()*8+"s";
+    e.textContent=["😖","💗","❓","🥺"][Math.floor(Math.random()*4)];
+    document.body.appendChild(e);
+
+    setTimeout(()=>e.remove(),20000);
+  }
+}
+
+
+/* SLIDES */
+const slides = [
+  { img: "assets/photo1.jpg", cap: "the major reason we are together-tedx 💫" },
+  { img: "assets/photo2.jpg", cap: "sushi at spezia and the non-eggy tiramisu" },
+  { img: "assets/photo3.jpg", cap: "the cab ride this day, was fun innit" },
+  { img: "assets/photo4.jpg", cap: "beige couple at sgtbkc" },
+  { img: "assets/photo5.jpg", cap: "first date+public kissing, 6m earlier khushi would die of embrassment" },
+  { img: "assets/photo6.jpg", cap: "best part of the day, metro rides together" },
+  { img: "assets/photo7.jpg", cap: "valentines 1y ago" },
+  { img: "assets/photo8.jpg", cap: "khushi da baday" },
+  { img: "assets/photo9.jpg", cap: "first few nsfw pics hehe" },
+  { img: "assets/photo10.jpg", cap: "nehas house, iykyk" },
+  { img: "assets/photo11.jpg", cap: "best thing khalsa gave me" },
+  { img: "assets/photo12.jpg", cap: "mai joru ka gulaam" },
+  { img: "assets/photo13.jpg", cap: "first of our many many pictures" },
+  { img: "assets/photo14.jpg", cap: "khushu's kinder joy collection" },
+  { img: "assets/photo15.jpg", cap: "khushu pressing mine after I presser hers lol" },
+  { img: "assets/photo16.jpg", cap: "when khushu hugged a lot of people huh" },
+  { img: "assets/photo17.jpg", cap: "manifesting us one day" },
+  { img: "assets/photo18.jpg", cap: "meeting ukp" },
+  { img: "assets/photo19.jpg", cap: "ukp da baday" },
+  { img: "assets/photo20.jpg", cap: "khushuu kaa nps" },
+  { img: "assets/photo21.jpg", cap: "uber pro" },
+  { img: "assets/photo22.jpg", cap: "us foreverrrrrrr 💜" }
+];
+
+let slideIndex = 0;
+
+function nextSlide(){
+  slideIndex = (slideIndex + 1) % slides.length;
+  slideImg.src = slides[slideIndex].img;
+  slideCap.innerText = slides[slideIndex].cap;
+}
+
+
+/* QUIZ */
+const quiz=[
+ {q:"Q- Who confessed their feelings first?",o:["kup","ukp","we have not confessed yet","utkarsh does not love me"],a:0},
+ {q:"Q- Who said I love you first?",o:["ukp","kup","no one","both"],a:0},
+ {q:"Q- First whatsapp convo?",o:["carlos sainz winning GP","college subject random","ted women","insta naha chalara hu abse mai"],a:1},
+ {q:"Q- First picture together?",o:["taco bell","spezia stairs","tedx women","college room ac wale"],a:3},
+ {q:"Q- Food we have had most together?",o:["cafeteria and co","nescafe at khalsa","taco bell","telegram"],a:2}
+];
+let qi=0,score=0;
+function loadQ(){
+  qText.innerText = quiz[qi].q;
+  qOpts.innerHTML = "";
+
+  quiz[qi].o.forEach((o,i)=>{
+    const b = document.createElement("button");
+    b.innerText = o;
+    b.onclick = () => {
+      if(i === quiz[qi].a) score++;
+      qi++;
+      qi < quiz.length ? loadQ() : endQuiz();
+    };
+    qOpts.appendChild(b);
+  });
+}
+  
+function endQuiz(){
+  go(4);
+  scoreText.innerHTML = "<div style='font-size:42px'>0 / 5</div>";
+
+  let i=0;
+  const count = setInterval(()=>{
+    i++;
+    scoreText.innerHTML = `<div style="font-size:42px">${i} / 5</div>`;
+    if(i>=score){
+      clearInterval(count);
+
+      let msg="";
+      let cls="";
+
+      if(score===5){
+        msg="Perfect score 💜 you win boing boing dance video 😘";
+      }else if(score===4){
+        msg="Not bad 😌 say, I love you uttu baby 10 times on video";
+      }else if(score===3){
+        msg="😈 sing a song and send";
+        cls="punish";
+      }else if(score===2){
+        msg="😈 dance and send";
+        cls="punish";
+      }else{
+        msg="😭 boing boing dance NOW";
+        cls="punish";
+      }
+
+      scoreText.innerHTML += `<p class="${cls}">${msg}</p>`;
+    }
+  },350);
+}
+
+loadQ();
+  
+/* 💜 PATH OF LOVE LOGIC */
+
+const steps = document.querySelectorAll("#path .step");
+const pathMsg = document.getElementById("pathMsg");
+const pathNext = document.getElementById("pathNext");
+
+let stepIndex = 0;
+
+const messages = [
+  "That’s me 😺 choosing you.",
+  "I bring peace 🤍",
+  "I bring comfort 😌",
+  "I protect you 🛡",
+  "I bring joy 😊",
+  "I bring love 💜",
+  "And I choose you. Always 🐱💍"
+];
+
+steps.forEach((step, i) => {
+  step.addEventListener("click", () => {
+    if (i !== stepIndex + 1 && i !== stepIndex) return;
+
+    // mark previous as done
+    steps[stepIndex].classList.remove("active");
+    steps[stepIndex].classList.add("done");
+
+    // move kitty
+    stepIndex = i;
+    steps[stepIndex].classList.add("active");
+
+    // show message
+    pathMsg.innerText = messages[stepIndex];
+
+
+    // final step
+    if (stepIndex === steps.length - 1) {
+      setTimeout(() => {
+        pathNext.style.display = "inline-block";
+      }, 800);
+    }
+  });
+});
+
+/* FIREWORKS */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+let particles=[];
+function boom(){
+  for(let i=0;i<120;i++){
+    particles.push({
+      x:innerWidth/2,
+      y:innerHeight/2,
+      vx:(Math.random()-0.5)*8,
+      vy:(Math.random()-0.5)*8,
+      life:100
+    });
+  }
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach((p,i)=>{
+    p.x+=p.vx;
+    p.y+=p.vy;
+    p.life--;
+
+    ctx.font="20px Apple Color Emoji";
+
+    ctx.fillText(
+      ["✨","💜","🌸"][Math.floor(Math.random()*3)],
+      p.x,
+      p.y
+    );
+
+    if(p.life<=0) particles.splice(i,1);
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+
+/* PROPOSAL */
+function no(){
+  proposalMsg.innerText = "😿 okay… but you still get another chance.";
+
+  proposalButtons.style.display = "none";
+
+  setTimeout(()=>{
+    proposalMsg.innerText = "";
+    proposalButtons.style.display = "block";
+  }, 2500);
+}
+
+
+
+function go(n){
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active','shake');
+  });
+
+  document.getElementById('p'+n).classList.add('active');
+
+  if(n===6){
+    startBuildup();
+  }
+
+  if(n===7){
+  document.getElementById("proposalOverlay").style.opacity="0";
+
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
+
+    heartbeat.currentTime = 0;
+    heartbeat.volume = 1;
+    heartbeat.play().catch(()=>{});
+
+    typeProposal.innerText = "";
+    proposalButtons.style.display = "none";
+
+    setTimeout(()=>{
+      typeText(
+        typeProposal,
+        "Khushi… will you be my Valentine, today and the rest of my life?",
+        55,
+        ()=> proposalButtons.style.display="block"
+      );
+    },1200);
+  }
+
+  if(n===9){
+    const love=document.getElementById("loveText");
+    love.innerText="";
+    typeText(
+      love,
+      "I love you so much. More than words, more than days, more than forever.",
+      60
+    );
+  }
+}
+
+
+
+
+function yes(){
+  heartbeat.pause();
+
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+
+  const finalMusic = document.getElementById("finalMusic");
+  finalMusic.volume = 0.45;
+  finalMusic.currentTime = 0;
+  finalMusic.play().catch(()=>{});
+
+  proposalButtons.style.display="none";
+  go(8);
+}
+function openGift(n){
+  const overlay = document.getElementById("giftOverlay");
+  const box = document.getElementById("giftBox");
+  const giftNext = document.getElementById("giftNext");
+
+  overlay.style.display = "flex";
+
+  if(n === 1){
+    box.innerHTML = `<img src="assets/coupon1.jpg"><p>A little surprise for you 💌</p>`;
+  }
+  if(n === 2){
+    box.innerHTML = `<img src="assets/letter.jpg"><p>Read this slowly 💜</p>`;
+  }
+  if(n === 3){
+    box.innerHTML = `
+      <video controls autoplay>
+        <source src="assets/video.mp4" type="video/mp4">
+      </video>
+      <p>Just for you 🎥</p>
+    `;
+  }
+
+  // ✅ THIS IS THE MISSING PIECE
+  giftNext.style.display = "inline-block";
+}
+
+
+
+
+function closeGift(){
+  const overlay = document.getElementById("giftOverlay");
+  overlay.style.display = "none";
+}
+
+
+
+
+</script>
+
+</body>
+</html>   
